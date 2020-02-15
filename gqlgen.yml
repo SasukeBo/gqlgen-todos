@@ -16,4 +16,8 @@ autobind: []
 
 models:
   Todo:
-    model: github.com/SasukeBo/gqlgen-todos/model.Todo
+    model: github.com/SasukeBo/gqlgen-todos.Todo
+  MyCustomBooleanScalar:
+    model: github.com/SasukeBo/gqlgen-todos.MyCustomBooleanScalar
+  MyCustomStringScalar:
+    model: github.com/SasukeBo/gqlgen-todos.MyCustomStringScalar

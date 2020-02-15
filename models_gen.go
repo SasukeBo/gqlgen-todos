@@ -3,8 +3,8 @@
 package gqlgen_todos
 
 type NewTodo struct {
-	Text   string `json:"text"`
-	UserID string `json:"userId"`
+	Text   MyCustomStringScalar `json:"text"`
+	UserID string               `json:"userId"`
 }
 
 type User struct {

@@ -1,7 +1,7 @@
 type Todo {
   id: ID!
-  text: String!
-  done: Boolean!
+  text: MyCustomStringScalar!
+  done: MyCustomBooleanScalar!
   user: User!
 }
 
@@ -15,10 +15,13 @@ type Query {
 }
 
 input NewTodo {
-  text: String!
+  text: MyCustomStringScalar!
   userId: String!
 }
 
 type Mutation {
   createTodo(input: NewTodo!): Todo!
 }
+
+scalar MyCustomBooleanScalar
+scalar MyCustomStringScalar

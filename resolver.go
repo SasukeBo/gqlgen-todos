@@ -4,13 +4,11 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
-
-	"github.com/SasukeBo/gqlgen-todos/model"
 )
 
 // Resolver _
 type Resolver struct {
-	todos []*model.Todo
+	todos []*Todo
 }
 
 // Mutation _
@@ -30,8 +28,8 @@ func (r *Resolver) Todo() TodoResolver {
 
 type mutationResolver struct{ *Resolver }
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input NewTodo) (*model.Todo, error) {
-	todo := &model.Todo{
+func (r *mutationResolver) CreateTodo(ctx context.Context, input NewTodo) (*Todo, error) {
+	todo := &Todo{
 		Text:   input.Text,
 		ID:     fmt.Sprintf("T%d", rand.Int()),
 		UserID: input.UserID,
@@ -43,12 +41,12 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input NewTodo) (*mode
 
 type queryResolver struct{ *Resolver }
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
+func (r *queryResolver) Todos(ctx context.Context) ([]*Todo, error) {
 	return r.todos, nil
 }
 
 type todoResolver struct{ *Resolver }
 
-func (r *todoResolver) User(ctx context.Context, obj *model.Todo) (*User, error) {
+func (r *todoResolver) User(ctx context.Context, obj *Todo) (*User, error) {
 	return &User{ID: obj.UserID, Name: "user " + obj.UserID}, nil
 }
